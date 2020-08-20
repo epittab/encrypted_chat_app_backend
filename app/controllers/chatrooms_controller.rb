@@ -1,4 +1,4 @@
-class ChatroomController < ApplicationController
+class ChatroomsController < ApplicationController
     before_action :authorize_request
 
     def index 
