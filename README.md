@@ -1,12 +1,12 @@
 To Do List
 
+4) nav bar bug
+6) avatar clicking...
 1) rename chat rooms
 2) who is messaging who
-<!-- 3) onclose -->
-4) nav bar bug
-5) review styling
-6) avatar clicking...
 7) friending
+5) review styling
+<!-- 3) onclose -->
 
 
 
