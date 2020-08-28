@@ -7,7 +7,7 @@ class ChatroomsController < ApplicationController
 
     def create
         # byebug
-        chat_room = Chatroom.new(user_id: @current_user.id)
+        chat_room = Chatroom.new(user_id: @current_user.id, chatroom_name: params[:chatroom_name])
         if chat_room.save
             render json: chat_room
         else
