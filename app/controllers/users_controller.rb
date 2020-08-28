@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         # 2) if I do have that user and the UN and PW check out, then grant token
         if (@user) 
             token = User.encode(@user)
-            render json: {token: token}, status: :ok  # token.to_json()
+            render json: {token: token, user_id: @user.id}, status: :ok  # token.to_json()
         # elsif user doesnt exist "if @user == nil"
 
         # else "if @user == false"
