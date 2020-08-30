@@ -21,6 +21,16 @@ class ChatroomsController < ApplicationController
         render json: chat_room, include: [:messages]
     end
 
+    def destroy
+        chatroom = Chatroom.find(params[:id])
+        if chatroom.messages.delete && chatroom.delete 
+            render json: {messages: chatroom.messages.delete, chatroom: chatroom.delete}
+        else
+            render json: {errors: chatroom.errors.full_messages},
+            status: 400
+        end
+    end
+
     private
 
     def chat_room_params(*args)

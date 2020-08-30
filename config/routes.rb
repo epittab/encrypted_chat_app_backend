@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :chatrooms, only: [:index, :create, :show]
+  resources :chatrooms, only: [:index, :create, :show, :destroy]
   resources :encryptions, only: [:index, :create]
   resources :messages, only: [:create]
   resources :users, except: :destroy
