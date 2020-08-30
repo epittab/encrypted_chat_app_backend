@@ -23,7 +23,8 @@ class ChatroomsController < ApplicationController
 
     def destroy
         chatroom = Chatroom.find(params[:id])
-        if chatroom.messages.delete && chatroom.delete 
+        # byebug
+        if chatroom.messages.delete_all && chatroom.delete 
             render json: {messages: chatroom.messages.delete, chatroom: chatroom.delete}
         else
             render json: {errors: chatroom.errors.full_messages},
