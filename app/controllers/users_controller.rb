@@ -4,7 +4,10 @@ class UsersController < ApplicationController
     before_action :find_user, only: [:show, :update]
 
     def index
-        render json: User.all, status: :ok
+        # filter out yoruself from user list
+        users_list = User.all.filter do |user| user.id != @current_user.id end 
+        # add if you are friends
+        render json: {users: users_list}, status: :ok
     end
 
     def show
