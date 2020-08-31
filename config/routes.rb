@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/users/login', to: 'users#login'
   post '/users/check', to: 'users#check'
 
-  get '/chatroom-info', to: 'chatrooms#info'
+  get '/chatrooms-info/', to: 'chatrooms#info'
 
   post 'encryptions/decrypt', to: 'encryptions#decrypt'
   

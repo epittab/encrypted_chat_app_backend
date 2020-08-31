@@ -21,6 +21,14 @@ class ChatroomsController < ApplicationController
         render json: chat_room, include: [:messages]
     end
 
+
+    def info
+
+        chatroom_list = Chatroom.all.filter do |cr| cr.user_id == @current_user.id end.map do |cr| {chatroom: cr, msg_count: cr.messages.count, last_msg: cr.messages.last} end 
+        # send back an array of chatroom (objects) that were created by current user
+        render json: {chatrooms: chatroom_list}, status: :ok
+    end
+
     def destroy
         chatroom = Chatroom.find(params[:id])
         # byebug
