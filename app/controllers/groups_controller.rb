@@ -1,12 +1,23 @@
 class GroupsController < ApplicationController
+
+    before_action :authorize_request
+
     def index
-        render json: Group.all
+        frienders = Group.where('friendee_id = ?', @current_user.id)
+        friendees = Group.where('friender_id = ?', @current_user.id)
+        render json: {friends_list: friendees + frienders}, status: 200
     end
 
     def create
-        render json: Group.create(group_params)
-    end
 
+        friendship = Group.new(friender_id: params[:friender_id], friendee_id: params[:friendee_id])
+        
+        if !Group.find_by(friendee_id: params[:friender_id], friender_id: params[:friendee_id]) && friendship.save
+            render json: {friendship: friendship, new_friend: User.find(friendee_id)}, status: :ok
+        else
+            render json: {error: true, message: "Error adding friend" }, status: :unprocessable_entity
+        end
+    end
     
     private
     def group_params
