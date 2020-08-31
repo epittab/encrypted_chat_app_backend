@@ -40,7 +40,8 @@ class UsersController < ApplicationController
         if (user.username != params[:username])
             user.username = params[:username]
         end
-        byebug
+        user.password = params[:password]
+        # byebug
         render json: user.save
     end
 
