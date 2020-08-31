@@ -3,9 +3,9 @@ class GroupsController < ApplicationController
     before_action :authorize_request
 
     def index
-        frienders = Group.where('friendee_id = ?', @current_user.id)
-        friendees = Group.where('friender_id = ?', @current_user.id)
-        render json: {friends_list: friendees + frienders}, status: 200
+        frienders = Group.where('friendee_id = ?', @current_user.id).map do |f| User.find(f.friender_id) end
+        friendees = Group.where('friender_id = ?', @current_user.id).map do |f| User.find(f.friendee_id) end
+        render json: {friends_list: (friendees + frienders).uniq}, status: 200
     end
 
     def create

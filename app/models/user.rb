@@ -43,5 +43,9 @@ class User < ApplicationRecord
         HashWithIndifferentAccess.new decoded
       end
 
+      def isFriend(f_id)
+        return true if Group.find_by(friender_id: self.id, friendee_id: f_id) || Group.find_by(friendee_id: self.id, friender_id: f_id)
+        return false
+      end
 
 end

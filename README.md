@@ -4,9 +4,12 @@ To Do List
 <!-- 6) avatar clicking... -->
 <!-- 1) rename chat rooms -->
 <!-- 2) who is messaging who -->
-<!-- 7) friending -->
+7) friending
+11) filter chatroom loading based on friends
+9) edit account
 8) chat interface
 5) review styling
+10) login toggle user menu bug
 <!-- 3) onclose -->
 
 

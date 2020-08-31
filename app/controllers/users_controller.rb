@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
 
     before_action :authorize_request, except: [:create, :login]
-    before_action :find_user, only: [:show, :update]
+    # before_action :find_user, only: [:show, :update]
 
     def index
         # filter out yoruself from user list
-        users_list = User.all.filter do |user| user.id != @current_user.id end 
+        users_list = User.all.filter do |user| user.id != @current_user.id end.map do |user| {user: user, isFriend: @current_user.isFriend(user.id)} end
         # add if you are friends
         render json: {users: users_list}, status: :ok
     end
 
     def show
-        render json: find_user(params[:user][:id]), status: :ok
+        # byebug
+        render json: find_user(params[:id]), status: :ok
     end
 
     def create
@@ -28,7 +29,19 @@ class UsersController < ApplicationController
     end
 
     def update
-
+        user = User.find(@current_user.id)
+        if (user.first_name != params[:first_name])
+            user.first_name = params[:first_name]
+        end
+        if (user.last_name != params[:last_name])
+            p true
+            user.last_name = params[:last_name]
+        end
+        if (user.username != params[:username])
+            user.username = params[:username]
+        end
+        byebug
+        render json: user.save
     end
 
     def login
