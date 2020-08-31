@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params(:first_name, :last_name, :username, :password))
         if @user.save
             token = User.encode(@user)
-            render json: {token: token}, status: :created 
+            render json: {token: token, user_id: @user.id}, status: :created 
             # render json: @user, status: :created
         else
             render json: { errors: @user.errors.full_messages },
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         creds = params[:user]
         # 1) check if user exists - lets use a method > check_user
         @user = User.check_user(creds)
-        
+        # byebug
         # 2) if I do have that user and the UN and PW check out, then grant token
         if (@user) 
             token = User.encode(@user)
