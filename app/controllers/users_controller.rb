@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
     def update
         user = User.find(@current_user.id)
+        # byebug
         if (user.first_name != params[:first_name])
             user.first_name = params[:first_name]
         end
