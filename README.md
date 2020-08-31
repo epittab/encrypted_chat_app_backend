@@ -9,7 +9,7 @@ To Do List
 <!-- 9) edit account -->
 8) chat interface
 5) review styling
-10) login toggle user menu bug
+<!-- 10) login toggle user menu bug -->
 <!-- 3) onclose -->
 
 
