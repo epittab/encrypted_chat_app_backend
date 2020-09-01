@@ -7,7 +7,7 @@ To Do List
 <!-- 7) friending -->
 <!-- 11) filter chatroom loading based on friends -->
 <!-- 9) edit account -->
-8) chat interface
+<!-- 8) chat interface -->
 5) review styling
 <!-- 10) login toggle user menu bug -->
 <!-- 3) onclose -->
