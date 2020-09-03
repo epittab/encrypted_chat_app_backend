@@ -2,7 +2,9 @@ class ChatroomsController < ApplicationController
     before_action :authorize_request
 
     def index 
-        render json: Chatroom.all
+        all_chatrooms = Chatroom.all.filter do |c| c.user_id === @current_user.id || @current_user.is_friend(c.user_id) end
+        # byebug
+        render json: all_chatrooms
     end
 
     def create

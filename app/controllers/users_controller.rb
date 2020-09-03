@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     def index
         # filter out yoruself from user list
-        users_list = User.all.filter do |user| user.id != @current_user.id end.map do |user| {user: user, isFriend: @current_user.isFriend(user.id)} end
+        users_list = User.all.filter do |user| user.id != @current_user.id end.map do |user| {user: user, isFriend: @current_user.is_friend(user.id)} end
         # add if you are friends
         render json: {users: users_list}, status: :ok
     end
