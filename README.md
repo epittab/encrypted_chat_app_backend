@@ -5,7 +5,9 @@ To Do List
 <!-- 1) rename chat rooms -->
 <!-- 2) who is messaging who -->
 <!-- 7) friending -->
-<!-- 11) filter chatroom loading based on friends -->
+11) filter chatroom loading based on friends
+12) wrong password login issue
+13) rotor 3 issue
 <!-- 9) edit account -->
 <!-- 8) chat interface -->
 5) review styling

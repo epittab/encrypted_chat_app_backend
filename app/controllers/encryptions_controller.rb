@@ -5,8 +5,7 @@ class EncryptionsController < ApplicationController
         render json: Encryption.all
     end
 
-    def create
-        
+    def create 
         encrypt = Encryption.new(encrypt_type: params[:type], key: params[:key] )
         if encrypt.save
             #do stuff
